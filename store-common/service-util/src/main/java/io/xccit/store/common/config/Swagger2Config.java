@@ -26,7 +26,7 @@ public class Swagger2Config {
      */
     @Bean
     public Docket webApiConfig(){
-        Docket webApi = new Docket(DocumentationType.SWAGGER_2)
+        return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("webApi")
                 .apiInfo(webApiInfo())
                 .select()
@@ -34,7 +34,6 @@ public class Swagger2Config {
                 .apis(RequestHandlerSelectors.basePackage("io.xccit.store"))
                 .paths(PathSelectors.regex("/api/.*"))
                 .build();
-        return webApi;
     }
     /**
      * admin的API配置
@@ -42,7 +41,7 @@ public class Swagger2Config {
      */
     @Bean
     public Docket adminApiConfig(){
-        Docket adminApi = new Docket(DocumentationType.SWAGGER_2)
+        return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("adminApi")
                 .apiInfo(adminApiInfo())
                 .select()
@@ -50,7 +49,6 @@ public class Swagger2Config {
                 .apis(RequestHandlerSelectors.basePackage("io.xccit.store"))
                 .paths(PathSelectors.regex("/admin/.*"))
                 .build();
-        return adminApi;
     }
 
     /**
