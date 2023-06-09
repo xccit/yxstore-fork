@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * @author CH_ywx
  * @date 2023-06-09
- * @description 统一结果返回类
+ * @description  统一结果返回对象
  */
 @Data
 public class AjaxResult<T> {

@@ -6,7 +6,7 @@ import lombok.Setter;
 /**
  * @author CH_ywx
  * @date 2023-06-09
- * @description 统一结果返回状态信息
+ * @description  统一结果返回状态信息
  */
 @Getter
 public enum ResultCodeEnum {
