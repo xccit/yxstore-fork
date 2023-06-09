@@ -12,7 +12,7 @@
     <artifactId>store-common</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>common-utils</module>
+        <module>common-util</module>
         <module>service-util</module>
     </modules>
 
