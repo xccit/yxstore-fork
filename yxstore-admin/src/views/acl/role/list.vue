@@ -20,7 +20,7 @@
       <i class="el-icon-tickets" style="margin-top: 5px"></i>
       <span style="margin-top: 5px">数据列表</span>
 
-      <el-button class="btn-add" size="mini" @click="addRole">添加</el-button>
+      <el-button type="success" class="btn-add" size="mini" @click="addRole">添加</el-button>
       <el-button class="btn-add" size="mini" @click="removeRoles()" :disabled="selectedRoles.length === 0" style="margin: 0 10px;">批量删除</el-button>
     </el-card>
 
