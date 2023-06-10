@@ -6,10 +6,11 @@
         <el-form :inline="true" size="small" label-width="140px">
           <el-form-item label="输入搜索：">
             <el-input style="width: 203px" v-model="tempSearchObj.username" placeholder="用户名"></el-input>
+            <el-button style="margin-left:20px;" type="primary" icon="el-icon-search" @click="getUsers()">查询</el-button>
+          <el-button type="warning" @click="resetSearch()">清空</el-button>
           </el-form-item>
 
-          <el-button type="primary" icon="el-icon-search" @click="getUsers()">查询</el-button>
-          <el-button type="default" @click="resetSearch()">清空</el-button>
+          
         </el-form>
       </div>
     </el-card>
@@ -18,7 +19,7 @@
     <el-card class="operate-container" shadow="never">
       <i class="el-icon-tickets" style="margin-top: 5px"></i>
       <span style="margin-top: 5px">数据列表</span>
-      <el-button class="btn-add" size="mini" @click="showAddUser">添 加</el-button>
+      <el-button class="btn-add" type="success" size="mini" @click="showAddUser">添 加</el-button>
       <el-button class="btn-add" size="mini" @click="revomveUsers" :disabled="selectedIds.length===0" style="margin: 0 10px;">批量删除</el-button>
     </el-card>
 
