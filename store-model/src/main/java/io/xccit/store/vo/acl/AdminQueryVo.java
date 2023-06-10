@@ -18,7 +18,7 @@ public class AdminQueryVo implements Serializable {
 	@ApiModelProperty(value = "用户名")
 	private String username;
 
-	@ApiModelProperty(value = "昵称")
+	@ApiModelProperty(value = "用户姓名")
 	private String name;
 
 }
