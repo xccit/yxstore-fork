@@ -25,6 +25,7 @@ store-
 	  		|service-util 微服务工具类
 	  |model 存放实体类等
 	  |service 微服务相关
+	          | service-acl 用户角色权限管理
 ```
 
 
