@@ -1,5 +1,7 @@
 package io.xccit.store.common.result;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -7,13 +9,17 @@ import lombok.Data;
  * @date 2023-06-09
  * @description  统一结果返回对象
  */
+@ApiModel("统一返回对象")
 @Data
 public class AjaxResult<T> {
 
+    @ApiModelProperty("状态码")
     //状态码
     private Integer code;
+    @ApiModelProperty("状态信息")
     //信息
     private String message;
+    @ApiModelProperty("响应数据")
     //数据
     private T data;
 
