@@ -1,5 +1,3 @@
-//
-//
 package io.xccit.store.vo.acl;
 
 import io.swagger.annotations.ApiModel;

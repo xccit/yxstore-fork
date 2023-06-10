@@ -41,4 +41,21 @@ public class AdminController {
         IPage<Admin> pageModel = adminService.getAdminPageList(adminPage,adminQueryVo);
         return AjaxResult.ok(pageModel);
     }
+
+    @ApiOperation("根据ID获取用户")
+    @GetMapping("/get/{id}")
+    public AjaxResult<Admin> getAdminByID(@ApiParam(value = "用户ID",required = true) @PathVariable Long id){
+        return AjaxResult.ok(adminService.getById(id));
+    }
+
+    @ApiOperation("用户添加")
+    @PostMapping("/save")
+    public AjaxResult<String> saveAdmin(@ApiParam(value = "用户请求体",required = true) @RequestBody Admin admin){
+        boolean saved = adminService.save(admin);
+        if (saved){
+            return AjaxResult.ok("添加成功");
+        }else{
+            return AjaxResult.fail("添加失败");
+        }
+    }
 }

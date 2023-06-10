@@ -27,11 +27,13 @@ public class AdminServiceImpl extends ServiceImpl<IAdminMapper, Admin> implement
         String name = adminQueryVo.getName();
         String username = adminQueryVo.getUsername();
         LambdaQueryWrapper<Admin> queryWrapper = new LambdaQueryWrapper<>();
+        //根据姓名模糊查询
         if (!StringUtils.isEmpty(name)){
             queryWrapper.eq(Admin::getName,name);
         }
+        //根据用户名精确查询
         if (!StringUtils.isEmpty(username)){
-            queryWrapper.eq(Admin::getUsername,username);
+            queryWrapper.like(Admin::getUsername,username);
         }
         return adminMapper.selectPage(adminPage,queryWrapper);
     }

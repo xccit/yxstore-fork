@@ -1,5 +1,3 @@
-//
-//
 package io.xccit.store.vo.acl;
 
 import io.swagger.annotations.ApiModel;
@@ -18,7 +16,7 @@ public class AdminQueryVo implements Serializable {
 	@ApiModelProperty(value = "用户名")
 	private String username;
 
-	@ApiModelProperty(value = "用户姓名")
+	@ApiModelProperty(value = "姓名")
 	private String name;
 
 }
