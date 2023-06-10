@@ -1,0 +1,6 @@
+spring:
+  # 激活dev配置
+  profiles:
+    active: dev
+  application:
+    name: service-acl
