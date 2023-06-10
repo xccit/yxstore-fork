@@ -6,6 +6,7 @@
         <el-form :inline="true" size="small" label-width="140px">
           <el-form-item label="输入搜索：">
             <el-input style="width: 203px" v-model="tempSearchObj.username" placeholder="用户名"></el-input>
+            <el-input style="width: 203px;margin-left:10px;" v-model="tempSearchObj.name" placeholder="姓名"></el-input>
             <el-button style="margin-left:20px;" type="primary" icon="el-icon-search" @click="getUsers()">查询</el-button>
           <el-button type="warning" @click="resetSearch()">清空</el-button>
           </el-form-item>
@@ -44,7 +45,7 @@
       />
 
       <el-table-column prop="username" label="用户名" width="120" />
-      <el-table-column prop="name" label="用户名称" width="120" />
+      <el-table-column prop="name" label="姓名" width="120" />
       <el-table-column prop="createTime" label="创建时间" width="180"/>
       <el-table-column prop="updateTime" label="更新时间" width="180"/>
 
@@ -133,7 +134,8 @@ export default {
         username: ''
       },
       tempSearchObj: { // 收集搜索条件输入的对象
-        username: ''
+        username: '',
+        name:''
       },
       selectedIds: [], // 所有选择的user的id的数组
       users: [], // 当前页的用户列表
