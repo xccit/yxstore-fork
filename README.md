@@ -16,8 +16,6 @@ Vue+ElementUI+vue-element-admin
 
 
 
-
-
 ## 后端模块划分
 
 ```text
@@ -28,4 +26,36 @@ store-
 	  |model 存放实体类等
 	  |service 微服务相关
 ```
+
+
+
+## 代码下载与运行
+
+### 分支
+
+```text
+yxstore
+	   | master 后端
+	   | msi-ui 管理端前端
+	   | ui 用户端前端
+```
+
+### 下载
+
+```shell
+管理端前端
+git clone -b msi-ui --single-branch https://gitee.com/xccit/yxstore.git
+用户端
+git clone -b ui --single-branch https://gitee.com/xccit/yxstore.git
+后端
+git clone -b master --single-branch https://gitee.com/xccit/yxstore.git
+```
+
+### 运行
+
+> 后端:配置数据源,启动中间件
+>
+> 管理端:配置npm,运行npm install 
+>
+> 用户端:导入小程序源码
 
