@@ -8,9 +8,12 @@ import io.swagger.annotations.ApiParam;
 import io.xccit.store.acl.service.IAdminService;
 import io.xccit.store.common.result.AjaxResult;
 import io.xccit.store.model.acl.Admin;
+import io.xccit.store.common.utils.MD5;
 import io.xccit.store.vo.acl.AdminQueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author CH_ywx
@@ -51,11 +54,41 @@ public class AdminController {
     @ApiOperation("用户添加")
     @PostMapping("/save")
     public AjaxResult<String> saveAdmin(@ApiParam(value = "用户请求体",required = true) @RequestBody Admin admin){
+        String md5Password = MD5.encrypt(admin.getPassword()); //加密
+        admin.setPassword(md5Password); //设置加密后的值
         boolean saved = adminService.save(admin);
         if (saved){
             return AjaxResult.ok("添加成功");
         }else{
             return AjaxResult.fail("添加失败");
+        }
+    }
+
+    @ApiOperation("修改用户")
+    @PutMapping("/update")
+    public AjaxResult<String> updateAdmin(@ApiParam(value = "修改用户请求体",required = true) @RequestBody Admin admin){
+        boolean updated = adminService.updateById(admin);
+        if (updated){
+            return AjaxResult.ok("更新成功");
+        }else{
+            return AjaxResult.fail("更新失败");
+        }
+    }
+
+    @ApiOperation("根据ID删除用户")
+    @DeleteMapping("/remove/{id}")
+    public AjaxResult<String> deleteByID(@ApiParam(value = "用户ID",required = true) @PathVariable Long id){
+        adminService.removeById(id);
+        return AjaxResult.ok("删除成功");
+    }
+
+    @ApiOperation("批量删除用户")
+    @DeleteMapping("/batchRemove")
+    public AjaxResult<String> removeBatch(@ApiParam(value = "用户ID列表",required = true) @RequestBody List<Long> ids){
+        if (adminService.removeBatchByIds(ids)){
+            return AjaxResult.ok("删除成功");
+        }else{
+            return AjaxResult.fail("删除失败");
         }
     }
 }
