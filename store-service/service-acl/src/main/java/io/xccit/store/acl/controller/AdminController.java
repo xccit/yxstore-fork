@@ -6,6 +6,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.xccit.store.acl.service.IAdminService;
+import io.xccit.store.acl.service.IRoleService;
 import io.xccit.store.common.result.AjaxResult;
 import io.xccit.store.model.acl.Admin;
 import io.xccit.store.common.utils.MD5;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author CH_ywx
@@ -29,11 +31,22 @@ public class AdminController {
 
     @Autowired
     private IAdminService adminService;
+    @Autowired
+    private IRoleService roleService;
 
 /*    @ApiOperation("用户登录")
     public AjaxResult<> login(){
 
     }*/
+
+
+    @ApiOperation("查询角色列表及根据用户ID获取用户已分配角色")
+    @GetMapping("/toAssign/{adminID}")
+    public AjaxResult<Map<String,Object>> toAssign(@ApiParam(value = "用户ID",required = true) @PathVariable Long adminID){
+        /*map中包含两部分数据:1.角色列表 2.用户已分配角色列表*/
+        Map<String,Object> roleAndAdminRole = roleService.getListByAdminID(adminID);
+        return AjaxResult.ok(roleAndAdminRole);
+    }
 
     @ApiOperation("用户分页条件查询")
     @GetMapping("/{pageNo}/{pageSize}")
