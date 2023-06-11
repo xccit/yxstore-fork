@@ -84,7 +84,7 @@
         <el-form-item label="用户名" prop="username">
           <el-input v-model="user.username"/>
         </el-form-item>
-        <el-form-item label="用户名称">
+        <el-form-item label="用户姓名">
           <el-input v-model="user.name"/>
         </el-form-item>
 
@@ -327,7 +327,7 @@ export default {
       this.listLoading = false
       const {records, total} = result.data
       this.users = records
-      this.total = total-1
+      this.total = total
       this.selectedIds = []
     },
 
