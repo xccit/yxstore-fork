@@ -63,4 +63,21 @@ public class RoleServiceImpl extends ServiceImpl<IRoleMapper, Role> implements I
         result.put("assignRoles",assignRoles);
         return result;
     }
+
+    @Override
+    public void setRoleByAdminID(Long adminId, Long[] roleIds) {
+        LambdaQueryWrapper<AdminRole> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(AdminRole::getAdminId,adminId);
+        //移除用户原有的角色列表
+        adminRoleService.remove(lambdaQueryWrapper);
+        //用户添加新传入的角色
+        List<AdminRole> adminRoleList = new ArrayList<>();
+        for (Long roleId : roleIds) {
+            AdminRole adminRole = new AdminRole();
+            adminRole.setAdminId(adminId);
+            adminRole.setRoleId(roleId);
+           adminRoleList.add(adminRole);
+        }
+        adminRoleService.saveBatch(adminRoleList);//批量添加
+    }
 }

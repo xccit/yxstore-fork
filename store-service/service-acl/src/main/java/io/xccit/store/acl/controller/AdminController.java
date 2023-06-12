@@ -48,6 +48,14 @@ public class AdminController {
         return AjaxResult.ok(roleAndAdminRole);
     }
 
+    @ApiOperation("用户分配角色")
+    @PostMapping("/doAssign")
+    public AjaxResult<String> doAssign(@ApiParam(value = "用户ID",required = true) @RequestParam("adminId") Long adminId,
+                                       @ApiParam(value = "角色ID集合",required = true) @RequestParam("roleId") Long[] roleIds){
+        roleService.setRoleByAdminID(adminId,roleIds);
+        return AjaxResult.ok(null);
+    }
+
     @ApiOperation("用户分页条件查询")
     @GetMapping("/{pageNo}/{pageSize}")
     public AjaxResult<IPage<Admin>> getAdminPageList(@ApiParam(value = "当前页",required = true) @PathVariable Long pageNo,
