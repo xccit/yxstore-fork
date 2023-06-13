@@ -6,6 +6,7 @@ import com.sun.istack.internal.NotNull;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import io.xccit.store.acl.service.IRolePermissionService;
 import io.xccit.store.acl.service.IRoleService;
 import io.xccit.store.common.result.AjaxResult;
 import io.xccit.store.model.acl.Role;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author CH_ywx
@@ -91,4 +93,5 @@ public class RoleController {
             return AjaxResult.fail("删除失败");
         }
     }
+
 }
