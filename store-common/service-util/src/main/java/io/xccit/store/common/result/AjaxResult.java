@@ -42,6 +42,16 @@ public class AjaxResult<T> {
         return result;
     }
 
+    public static<T> AjaxResult<T> build(T data,Integer code,String message){
+        AjaxResult<T> result = new AjaxResult<>();
+        if (data != null){
+            result.setData(data);
+        }
+        result.setCode(code);
+        result.setMessage(message);
+        return result;
+    }
+
     /**
      * 请求成功
      * @param data 数据

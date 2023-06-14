@@ -2,6 +2,7 @@ package io.xccit.store.sys.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import io.xccit.store.model.sys.RegionWare;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import io.xccit.store.model.sys.RegionWare;
  * @author xccit-dev
  * @since 2023-06-14
  */
+@Repository
 public interface RegionWareMapper extends BaseMapper<RegionWare> {
 
 }

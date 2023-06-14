@@ -1,8 +1,11 @@
 package io.xccit.store.sys.service;
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import io.xccit.store.model.sys.RegionWare;
+import io.xccit.store.vo.sys.RegionWareQueryVo;
 
 /**
  * <p>
@@ -14,4 +17,7 @@ import io.xccit.store.model.sys.RegionWare;
  */
 public interface IRegionWareService extends IService<RegionWare> {
 
+    IPage<RegionWare> getPageList(Page<RegionWare> regionWarePage, RegionWareQueryVo regionWare);
+
+    void openRegionWare(RegionWare regionWare);
 }

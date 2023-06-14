@@ -21,7 +21,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(Exception.class) //处理所有Exception
     @ResponseBody //将AjaxResult转成JSON返回至前端
-    public AjaxResult error(Exception e){
+    public AjaxResult<Exception> error(Exception e){
         e.printStackTrace();
         return AjaxResult.fail(null);
     }
@@ -33,9 +33,9 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(StoreException.class)
     @ResponseBody
-    public AjaxResult error(StoreException e){
+    public AjaxResult<StoreException> error(StoreException e){
         e.printStackTrace();
-        return AjaxResult.fail(null);
+        return AjaxResult.build(null,e.getCode(),e.getMessage());
     }
 
 }

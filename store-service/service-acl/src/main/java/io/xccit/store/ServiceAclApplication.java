@@ -1,4 +1,4 @@
-package io.xccit.store.acl;
+package io.xccit.store;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
