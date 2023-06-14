@@ -12,6 +12,7 @@
         <module>store-common</module>
         <module>store-service</module>
         <module>store-model</module>
+        <module>store-generator</module>
     </modules>
 
     <parent>

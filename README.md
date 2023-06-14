@@ -21,6 +21,7 @@ Vue+ElementUI+vue-element-admin
 ```text
 store-
 	  |common 公共组件
+	  |generator 代码生成
 	  		|common-util 公共工具类
 	  		|service-util 微服务工具类
 	  |model 存放实体类等
