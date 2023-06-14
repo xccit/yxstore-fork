@@ -13,6 +13,8 @@ import io.xccit.store.vo.sys.RegionWareQueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.Path;
+
 /**
  * <p>
  * 城市仓库关联表 前端控制器
@@ -45,6 +47,20 @@ public class RegionWareController {
     public AjaxResult<String> openRegionWare(@ApiParam(value = "区域仓库请求体",required = true) @RequestBody RegionWare regionWare){
         regionWareService.openRegionWare(regionWare);
         return AjaxResult.ok("开通成功");
+    }
+
+    @ApiOperation("删除开通区域")
+    @DeleteMapping("/remove/{id}")
+    public AjaxResult<Boolean> deleteRegionWare(@PathVariable("id") Long id){
+        return AjaxResult.ok(regionWareService.removeById(id));
+    }
+
+    @ApiOperation("取消开通区域")
+    @PostMapping("/updateStatus/{id}/{status}")
+    public AjaxResult<Boolean> cancelRegionWare(@ApiParam(value = "区域仓库ID",required = true) @PathVariable Long id,
+                                       @ApiParam(value = "区域仓库状态",required = true) @PathVariable Integer status){
+
+        return AjaxResult.ok(regionWareService.updateStatus(id,status));
     }
 }
 

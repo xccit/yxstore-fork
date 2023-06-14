@@ -20,4 +20,6 @@ public interface IRegionWareService extends IService<RegionWare> {
     IPage<RegionWare> getPageList(Page<RegionWare> regionWarePage, RegionWareQueryVo regionWare);
 
     void openRegionWare(RegionWare regionWare);
+
+    Boolean updateStatus(Long id, Integer status);
 }
