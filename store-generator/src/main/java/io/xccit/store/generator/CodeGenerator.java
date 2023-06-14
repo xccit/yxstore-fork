@@ -39,10 +39,9 @@ public class CodeGenerator {
 
     private final String moduleName; //模块名
 
-    private final String tableName; //表名
 
 
-    public CodeGenerator(String projectPath, String author, String dataSourceUrl, String userName, String password, String packageName, String moduleName,String... tableName) {
+    public CodeGenerator(String projectPath, String author, String dataSourceUrl, String userName, String password, String packageName, String moduleName) {
         this.projectPath = projectPath;
         this.author = author;
         this.dataSourceUrl = dataSourceUrl;
@@ -50,11 +49,14 @@ public class CodeGenerator {
         this.password = password;
         this.packageName = packageName;
         this.moduleName = moduleName;
-        this.tableName = Arrays.toString(tableName);
         this.codePath = this.projectPath+"/src/main/java";
     }
 
-    public void generator(){
+    /**
+     * 生成代码
+     * @param tableName 表名
+     */
+    public void generator(String... tableName){
         System.out.println(this);
         // 1、创建代码生成器
         AutoGenerator mpg = new AutoGenerator();
@@ -84,7 +86,7 @@ public class CodeGenerator {
         mpg.setPackageInfo(pc);
         // 5、策略配置
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setInclude(this.tableName); //数据表
+        strategy.setInclude(tableName); //数据表
         strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的命名策略
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);//数据库表字段映射到实体的命名策略
         strategy.setEntityLombokModel(true); // lombok 模型 @Accessors(chain = true) setter链式操作

@@ -11,10 +11,8 @@ public class Generator {
                 "E:\\IdeaProjects\\yxstore-master\\store-service\\service-sys",
                 "xccit-dev",
                 "jdbc:mysql://localhost:3306/shequ-sys",
-                "root","1209","io.xccit.store","sys",
-                "region","ware","region_ware"
-
+                "root","1209","io.xccit.store","sys"
         );
-        codeGenerator.generator();
+        codeGenerator.generator("region","ware","region_ware");
     }
 }
