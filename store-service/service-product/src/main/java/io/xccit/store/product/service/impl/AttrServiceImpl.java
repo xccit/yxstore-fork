@@ -1,6 +1,6 @@
 package io.xccit.store.product.service.impl;
 
-import io.xccit.store.product.entity.Attr;
+import io.xccit.store.model.product.Attr;
 import io.xccit.store.product.mapper.AttrMapper;
 import io.xccit.store.product.service.IAttrService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

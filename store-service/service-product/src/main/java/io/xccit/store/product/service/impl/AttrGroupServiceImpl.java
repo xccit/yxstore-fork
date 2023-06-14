@@ -1,6 +1,7 @@
 package io.xccit.store.product.service.impl;
 
-import io.xccit.store.product.entity.AttrGroup;
+
+import io.xccit.store.model.product.AttrGroup;
 import io.xccit.store.product.mapper.AttrGroupMapper;
 import io.xccit.store.product.service.IAttrGroupService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

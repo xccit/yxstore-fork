@@ -1,6 +1,6 @@
 package io.xccit.store.product.mapper;
 
-import io.xccit.store.product.entity.SkuStockHistory;
+import io.xccit.store.model.product.SkuStockHistory;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

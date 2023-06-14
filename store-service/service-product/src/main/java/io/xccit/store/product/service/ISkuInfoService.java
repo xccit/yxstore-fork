@@ -1,7 +1,8 @@
 package io.xccit.store.product.service;
 
-import io.xccit.store.product.entity.SkuInfo;
+
 import com.baomidou.mybatisplus.extension.service.IService;
+import io.xccit.store.model.product.SkuInfo;
 
 /**
  * <p>

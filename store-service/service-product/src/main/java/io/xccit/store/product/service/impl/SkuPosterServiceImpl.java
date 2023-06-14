@@ -1,6 +1,6 @@
 package io.xccit.store.product.service.impl;
 
-import io.xccit.store.product.entity.SkuPoster;
+import io.xccit.store.model.product.SkuPoster;
 import io.xccit.store.product.mapper.SkuPosterMapper;
 import io.xccit.store.product.service.ISkuPosterService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

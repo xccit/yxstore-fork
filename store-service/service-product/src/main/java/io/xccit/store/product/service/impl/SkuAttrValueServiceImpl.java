@@ -1,6 +1,6 @@
 package io.xccit.store.product.service.impl;
 
-import io.xccit.store.product.entity.SkuAttrValue;
+import io.xccit.store.model.product.SkuAttrValue;
 import io.xccit.store.product.mapper.SkuAttrValueMapper;
 import io.xccit.store.product.service.ISkuAttrValueService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

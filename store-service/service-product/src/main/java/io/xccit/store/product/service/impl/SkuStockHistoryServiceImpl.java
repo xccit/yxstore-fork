@@ -1,6 +1,6 @@
 package io.xccit.store.product.service.impl;
 
-import io.xccit.store.product.entity.SkuStockHistory;
+import io.xccit.store.model.product.SkuStockHistory;
 import io.xccit.store.product.mapper.SkuStockHistoryMapper;
 import io.xccit.store.product.service.ISkuStockHistoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

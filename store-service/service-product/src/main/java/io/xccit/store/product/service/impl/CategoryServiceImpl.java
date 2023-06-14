@@ -1,6 +1,6 @@
 package io.xccit.store.product.service.impl;
 
-import io.xccit.store.product.entity.Category;
+import io.xccit.store.model.product.Category;
 import io.xccit.store.product.mapper.CategoryMapper;
 import io.xccit.store.product.service.ICategoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
