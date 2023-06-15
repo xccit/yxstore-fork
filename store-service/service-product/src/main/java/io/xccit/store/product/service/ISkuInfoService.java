@@ -1,8 +1,12 @@
 package io.xccit.store.product.service;
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import io.xccit.store.model.product.SkuInfo;
+import io.xccit.store.vo.product.SkuInfoQueryVo;
+import io.xccit.store.vo.product.SkuInfoVo;
 
 /**
  * <p>
@@ -14,4 +18,7 @@ import io.xccit.store.model.product.SkuInfo;
  */
 public interface ISkuInfoService extends IService<SkuInfo> {
 
+    IPage<SkuInfo> getPageList(Page<SkuInfo> skuInfoPage, SkuInfoQueryVo skuInfoQueryVo);
+
+    void saveSkuInfo(SkuInfoVo skuInfoVo);
 }

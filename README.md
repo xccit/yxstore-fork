@@ -28,6 +28,7 @@ store-
 	  |service 微服务相关
 	          | service-acl 用户角色权限管理
 	          | service-sys 系统管理
+	          | service-product  商品管理
 ```
 
 
@@ -144,4 +145,8 @@ git clone -b master --single-branch https://gitee.com/xccit/yxstore.git
 > 管理端:配置npm,运行npm install 
 >
 > 用户端:导入小程序源码
+
+
+### 运行时注意
+> 数据源的配置,阿里云OSS的AccessKey配置
 
