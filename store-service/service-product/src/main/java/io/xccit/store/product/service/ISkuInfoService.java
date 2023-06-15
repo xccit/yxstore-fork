@@ -21,4 +21,8 @@ public interface ISkuInfoService extends IService<SkuInfo> {
     IPage<SkuInfo> getPageList(Page<SkuInfo> skuInfoPage, SkuInfoQueryVo skuInfoQueryVo);
 
     void saveSkuInfo(SkuInfoVo skuInfoVo);
+
+    SkuInfoVo getSkuInfoByID(Long id);
+
+    void updateBySkuID(SkuInfoVo skuInfoVo);
 }

@@ -46,6 +46,12 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoMapper, SkuInfo> impl
     @Autowired
     private ISkuAttrValueService skuAttrValueService;
 
+    /**
+     *
+     * @param skuInfoPage 分页条件
+     * @param skuInfoQueryVo SkuInfo查询对象
+     * @return 分页数据
+     */
     @Override
     public IPage<SkuInfo> getPageList(Page<SkuInfo> skuInfoPage, SkuInfoQueryVo skuInfoQueryVo) {
         LambdaQueryWrapper<SkuInfo> wrapper = new LambdaQueryWrapper<>();
@@ -64,6 +70,10 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoMapper, SkuInfo> impl
         return skuInfoMapper.selectPage(skuInfoPage,wrapper);
     }
 
+    /**
+     *
+     * @param skuInfoVo 查询对象
+     */
     @Override
     public void saveSkuInfo(SkuInfoVo skuInfoVo) {
         SkuInfo skuInfo = new SkuInfo();
@@ -95,5 +105,36 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoMapper, SkuInfo> impl
             }
             skuAttrValueService.saveBatch(skuAttrValueList);
         }
+    }
+
+    @Override
+    public SkuInfoVo getSkuInfoByID(Long id) {
+        SkuInfoVo skuInfoVo = new SkuInfoVo();
+        //查询基础的SkuInfo
+        SkuInfo skuInfo = skuInfoMapper.selectById(id);
+        BeanUtils.copyProperties(skuInfo,skuInfoVo);
+        //查询SkuImage
+        List<SkuImage> skuImageList = skuImageService.getListBySkuInfoID(id);
+        skuInfoVo.setSkuImagesList(skuImageList);
+        //查询SkuPoster
+        List<SkuPoster> skuPosterList = skuPosterService.getListBySkuID(id);
+        skuInfoVo.setSkuPosterList(skuPosterList);
+        //查询SkuAttrValue
+        List<SkuAttrValue> skuAttrValueList = skuAttrValueService.getListByID(id);
+        skuInfoVo.setSkuAttrValueList(skuAttrValueList);
+        return skuInfoVo;
+    }
+
+    @Override
+    public void updateBySkuID(SkuInfoVo skuInfoVo) {
+        SkuInfo skuInfo = new SkuInfo();
+        BeanUtils.copyProperties(skuInfoVo,skuInfo);
+        skuInfoMapper.updateById(skuInfo);
+        List<SkuImage> skuImagesList = skuInfoVo.getSkuImagesList();
+        skuImageService.updateBatchById(skuImagesList);
+        List<SkuPoster> skuPosterList = skuInfoVo.getSkuPosterList();
+        skuPosterService.updateBatchById(skuPosterList);
+        List<SkuAttrValue> skuAttrValueList = skuInfoVo.getSkuAttrValueList();
+        skuAttrValueService.updateBatchById(skuAttrValueList);
     }
 }

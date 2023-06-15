@@ -48,5 +48,25 @@ public class SkuInfoController {
         skuInfoService.saveSkuInfo(skuInfoVo);
         return AjaxResult.ok("添加成功");
     }
+    @ApiOperation("根据ID获取")
+    @GetMapping("/get/{id}")
+    public AjaxResult<SkuInfoVo> getSkuInfoByID(@ApiParam("商品信息ID") @PathVariable Long id){
+        SkuInfoVo skuInfoVo = skuInfoService.getSkuInfoByID(id);
+        return AjaxResult.ok(skuInfoVo);
+    }
+
+    @ApiOperation("根据ID修改")
+    @PutMapping("/update")
+    public AjaxResult<String> updateSkuInfo(@RequestBody SkuInfoVo skuInfoVo){
+        skuInfoService.updateBySkuID(skuInfoVo);
+        return AjaxResult.ok("修改成功");
+    }
+
+    @ApiOperation("根据ID删除")
+    @DeleteMapping("/remove/{id}")
+    public AjaxResult<String> deleteByID(@ApiParam(value = "商品SkuID",required = true) @PathVariable Long id){
+        skuInfoService.removeById(id);
+        return AjaxResult.ok("删除成功");
+    }
 }
 
