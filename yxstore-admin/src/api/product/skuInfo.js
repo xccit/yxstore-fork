@@ -18,19 +18,19 @@ export default {
     })
   },
 
-  save(role) {
+  save(skuInfo) {
     return request({
       url: `${api_name}/save`,
       method: 'post',
-      data: role
+      data: skuInfo
     })
   },
 
-  updateById(role) {
+  updateById(skuInfo) {
     return request({
       url: `${api_name}/update`,
       method: 'put',
-      data: role
+      data: skuInfo
     })
   },
   removeById(id) {
