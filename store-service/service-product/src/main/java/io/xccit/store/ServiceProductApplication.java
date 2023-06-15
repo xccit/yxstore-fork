@@ -10,8 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-public class ProductServiceApplication {
+public class ServiceProductApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ProductServiceApplication.class,args);
+        SpringApplication.run(ServiceProductApplication.class,args);
+        System.out.println("商品管理模块启动成功");
     }
 }

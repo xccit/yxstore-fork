@@ -1,8 +1,11 @@
 package io.xccit.store.product.service;
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import io.xccit.store.model.product.AttrGroup;
+import io.xccit.store.vo.product.AttrGroupQueryVo;
 
 /**
  * <p>
@@ -14,4 +17,5 @@ import io.xccit.store.model.product.AttrGroup;
  */
 public interface IAttrGroupService extends IService<AttrGroup> {
 
+    IPage<AttrGroup> getPageList(Page<AttrGroup> attrGroupPage, AttrGroupQueryVo attrGroupQueryVo);
 }
