@@ -72,7 +72,7 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoMapper, SkuInfo> impl
 
     /**
      *
-     * @param skuInfoVo 查询对象
+     * @param skuInfoVo SkuInfoVo
      */
     @Override
     public void saveSkuInfo(SkuInfoVo skuInfoVo) {
