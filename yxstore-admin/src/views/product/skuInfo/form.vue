@@ -49,12 +49,12 @@
           <div :key="item.id" v-for="(item,index) in attrList" :class="{littleMarginTop:index!==0}">
             <div class="paramInputLabel">{{item.name}}:</div>
             <el-select v-if="item.inputType===1" class="paramInput" v-model="attrList[index].value" style="width: 300px">
-              <el-option
+              <el-input
                 v-for="item in getParamSelectList(item.selectList)"
                 :key="item"
                 :label="item"
                 :value="item">
-              </el-option>
+              </el-input>
             </el-select>
             <el-input v-else class="paramInput" v-model="attrList[index].value" style="width: 300px"></el-input>
           </div>
@@ -222,7 +222,7 @@ export default {
         this.attrList = response.data
 
         // 修改属性回显
-        debugger
+        // debugger
         if (this.skuInfo.skuAttrValueList.length > 0) {
           this.attrList.forEach(attrItem => {
             this.skuInfo.skuAttrValueList.forEach(valueItem => {
@@ -280,7 +280,7 @@ export default {
 
     // 根据id更新记录
     updateData() {
-      debugger
+      // debugger
       const attrListArray = []
       this.attrList.forEach(item => {
         attrListArray.push({
@@ -311,7 +311,7 @@ export default {
     // 根据id查询记录
     fetchDataById(id) {
       api.getById(id).then(response => {
-        debugger
+        // debugger
         this.skuInfo = response.data
 
         // 平台属性回显
@@ -379,7 +379,7 @@ export default {
     //-----------------
     // 上传图片成功的回调
     onUploadPosterSuccess(res, file) {
-      debugger
+      // debugger
       // 填充上传文件列表
       this.skuInfo.skuPosterList.push({
         imgName: file.name,
