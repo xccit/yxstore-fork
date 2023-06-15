@@ -17,19 +17,19 @@ export default {
     })
   },
 
-  save(role) {
+  save(attr) {
     return request({
       url: `${api_name}/save`,
       method: 'post',
-      data: role
+      data: attr
     })
   },
 
-  updateById(role) {
+  updateById(attr) {
     return request({
       url: `${api_name}/update`,
       method: 'put',
-      data: role
+      data: attr
     })
   },
   removeById(id) {

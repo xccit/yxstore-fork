@@ -204,7 +204,7 @@ export default {
     },
 
     // 重置查询表单
-    resetData() {
+    resetSearch() {
       console.log('重置查询表单')
       this.searchObj = {}
       this.fetchData()

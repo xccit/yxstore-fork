@@ -44,6 +44,9 @@
 
       <el-table-column prop="name" label="分类名称" />
       <el-table-column prop="sort" label="排序" />
+      <!-- <el-table-column prop="imgUrl" label="分类图片">
+        <el-image :src="imgUrl"></el-image>
+      </el-table-column> -->
       <el-table-column prop="createTime" label="创建时间" />
       <el-table-column prop="updateTime" label="更新时间" />
 
@@ -119,7 +122,6 @@ export default {
 
       api.getPageList(this.page, this.limit, this.searchObj).then(
         response => {
-          debugger
           this.list = response.data.records
           this.total = response.data.total
 

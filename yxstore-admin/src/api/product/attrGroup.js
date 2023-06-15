@@ -26,11 +26,11 @@ export default {
     })
   },
 
-  updateById(role) {
+  updateById(attrGroup) {
     return request({
       url: `${api_name}/update`,
       method: 'put',
-      data: role
+      data: attrGroup
     })
   },
   removeById(id) {
