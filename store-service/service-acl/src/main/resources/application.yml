@@ -4,3 +4,7 @@ spring:
     active: dev
   application:
     name: service-acl
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
