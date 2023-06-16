@@ -149,4 +149,6 @@ git clone -b master --single-branch https://gitee.com/xccit/yxstore.git
 
 ### 运行时注意
 > 数据源的配置,阿里云OSS的AccessKey配置
+> 
+> Nacos安装及配置
 
