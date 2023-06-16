@@ -29,6 +29,7 @@ store-
 	          | service-acl 用户角色权限管理
 	          | service-sys 系统管理
 	          | service-product  商品管理
+	          | service-search  商品上下架/搜索...
 ```
 
 
