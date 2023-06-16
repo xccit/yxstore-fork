@@ -25,4 +25,10 @@ public interface ISkuInfoService extends IService<SkuInfo> {
     SkuInfoVo getSkuInfoByID(Long id);
 
     void updateBySkuID(SkuInfoVo skuInfoVo);
+
+    SkuInfo check(Long skuID, Integer status);
+
+    SkuInfo publish(Long skuID, Integer status);
+
+    SkuInfo isNewPerson(Long skuID, Integer status);
 }

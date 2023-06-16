@@ -32,11 +32,6 @@ public class CategoryController {
     @Autowired
     private ICategoryService categoryService;
 
-    @GetMapping(value = {"/",""})
-    public String index(){
-        return "请在前端访问商品管理";
-    }
-
     @ApiOperation("商品分类分页条件查询")
     @GetMapping("/{pageNo}/{pageSize}")
     public AjaxResult<IPage<Category>> getPageList(@ApiParam(value = "当前页",required = true) @PathVariable Long pageNo,

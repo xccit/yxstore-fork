@@ -127,14 +127,78 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoMapper, SkuInfo> impl
 
     @Override
     public void updateBySkuID(SkuInfoVo skuInfoVo) {
+        //修改SkuInfo
         SkuInfo skuInfo = new SkuInfo();
         BeanUtils.copyProperties(skuInfoVo,skuInfo);
         skuInfoMapper.updateById(skuInfo);
-        List<SkuImage> skuImagesList = skuInfoVo.getSkuImagesList();
-        skuImageService.updateBatchById(skuImagesList);
-        List<SkuPoster> skuPosterList = skuInfoVo.getSkuPosterList();
-        skuPosterService.updateBatchById(skuPosterList);
-        List<SkuAttrValue> skuAttrValueList = skuInfoVo.getSkuAttrValueList();
-        skuAttrValueService.updateBatchById(skuAttrValueList);
+        //修改SkuImage 删除旧的,保存新的
+        List<SkuImage> newSkuImageList = skuInfoVo.getSkuImagesList();
+        List<SkuImage> oldSkuImageList = skuImageService.getListBySkuInfoID(skuInfo.getId());
+        for (SkuImage skuImage : oldSkuImageList) {
+            skuImageService.removeById(skuImage);
+        }
+        for (SkuImage skuImage : newSkuImageList) {
+            skuImage.setSkuId(skuInfo.getId());
+            skuImageService.save(skuImage);
+        }
+        //修改SkuPoster
+        List<SkuPoster> newSkuPosterList = skuInfoVo.getSkuPosterList();
+        List<SkuPoster> oldSkuPosterList = skuPosterService.getListBySkuID(skuInfo.getId());
+        for (SkuPoster skuPoster : oldSkuPosterList) {
+            skuPosterService.removeById(skuPoster);
+        }
+        for (SkuPoster skuPoster : newSkuPosterList) {
+            skuPoster.setSkuId(skuInfo.getId());
+            skuPosterService.save(skuPoster);
+        }
+        List<SkuAttrValue> newSkuAttrValueList = skuInfoVo.getSkuAttrValueList();
+        List<SkuAttrValue> oldSkuAttrValue = skuAttrValueService.getListBySkuID(skuInfo.getId());
+        for (SkuAttrValue skuAttrValue : oldSkuAttrValue) {
+            skuAttrValueService.removeById(skuAttrValue);
+        }
+        for (SkuAttrValue skuAttrValue : newSkuAttrValueList) {
+            skuAttrValue.setSkuId(skuInfo.getId());
+            skuAttrValueService.save(skuAttrValue);
+        }
+    }
+
+    @Override
+    public SkuInfo check(Long skuID, Integer status) {
+        SkuInfo skuInfo = skuInfoMapper.selectById(skuID);
+        skuInfo.setCheckStatus(status);
+        skuInfoMapper.updateById(skuInfo);
+        return skuInfo;
+    }
+
+    /**
+     * 商品上下架
+     * @param skuID skuID
+     * @param status 上下架状态
+     * @return Sku
+     */
+    @Override
+    public SkuInfo publish(Long skuID, Integer status) {
+        if (status == 1){ //上架
+            SkuInfo skuInfo = skuInfoMapper.selectById(skuID);
+            skuInfo.setPublishStatus(status);
+            skuInfoMapper.updateById(skuInfo);
+            // TODO 整合MQ把数据同步到ES
+            return skuInfo;
+        }else{ //下架
+            SkuInfo skuInfo = skuInfoMapper.selectById(skuID);
+            skuInfo.setPublishStatus(status);
+            skuInfoMapper.updateById(skuInfo);
+            // TODO 整合MQ把数据同步到ES
+            return skuInfo;
+        }
+    }
+
+    @Override
+    public SkuInfo isNewPerson(Long skuID, Integer status) {
+        SkuInfo skuInfo = new SkuInfo();
+        skuInfo.setId(skuID);
+        skuInfo.setIsNewPerson(status);
+        skuInfoMapper.updateById(skuInfo);
+        return skuInfo;
     }
 }

@@ -68,5 +68,28 @@ public class SkuInfoController {
         skuInfoService.removeById(id);
         return AjaxResult.ok("删除成功");
     }
+
+    @ApiOperation("商品审核")
+    @GetMapping("/check/{skuID}/{status}")
+    public AjaxResult<SkuInfo> check(@PathVariable Long skuID,@PathVariable Integer status){
+        SkuInfo skuInfo = skuInfoService.check(skuID,status);
+        return AjaxResult.ok(skuInfo);
+    }
+
+    @ApiOperation("商品上架")
+    @GetMapping("/publish/{skuID}/{status}")
+    public AjaxResult<SkuInfo> publish(@PathVariable Long skuID,@PathVariable Integer status){
+        SkuInfo skuInfo = skuInfoService.publish(skuID,status);
+        return AjaxResult.ok(skuInfo);
+    }
+
+    @ApiOperation("新人专享")
+    @GetMapping("/isNewPerson/{skuID}/{status}")
+    public AjaxResult<SkuInfo> isNewPerson(@PathVariable Long skuID,@PathVariable Integer status){
+        SkuInfo skuInfo = skuInfoService.isNewPerson(skuID,status);
+        return AjaxResult.ok(skuInfo);
+    }
+
+
 }
 
