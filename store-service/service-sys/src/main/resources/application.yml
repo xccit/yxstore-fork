@@ -3,6 +3,7 @@ spring:
     name: service-sys
   profiles:
     active: dev
+  # SpringCloud
   cloud:
     nacos:
       discovery:
