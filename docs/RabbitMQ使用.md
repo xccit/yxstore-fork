@@ -41,5 +41,28 @@ docker run -d --restart=always -p 5672:5672 -p 15672:15672 --name rabbitmq rabbi
 </dependencies>
 ```
 
-### 参阅源码
+### 配置
+
+> 在包含接口的模块中添加RabbitMQ配置，商品上下架接口在service-product模块
+
+```yaml
+spring:
+  #RabbitMQ配置
+  rabbitmq:
+    host: 10.2.87.200
+    port: 5672
+    username: guest
+    password: guest
+    publisher-confirm-type: CORRELATED  #发布确认模式，消息是否被成功发送到交换机
+    publisher-returns: true
+    listener:
+      simple:
+        prefetch: 1
+        concurrency: 3
+        acknowledge-mode: manual   #消费端手动确认
+```
+
+> 注意，RabbitMQ配置在Spring中，注意缩进
+
+### 其他参考源码
 

@@ -7,6 +7,8 @@ import io.xccit.store.model.product.SkuAttrValue;
 import io.xccit.store.model.product.SkuImage;
 import io.xccit.store.model.product.SkuInfo;
 import io.xccit.store.model.product.SkuPoster;
+import io.xccit.store.mq.constant.MQConst;
+import io.xccit.store.mq.service.RabbitService;
 import io.xccit.store.product.mapper.SkuInfoMapper;
 import io.xccit.store.product.service.ISkuAttrValueService;
 import io.xccit.store.product.service.ISkuImageService;
@@ -45,6 +47,10 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoMapper, SkuInfo> impl
 
     @Autowired
     private ISkuAttrValueService skuAttrValueService;
+
+    @Autowired
+    private RabbitService rabbitService;
+
 
     /**
      *
@@ -180,15 +186,21 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoMapper, SkuInfo> impl
     public SkuInfo publish(Long skuID, Integer status) {
         if (status == 1){ //上架
             SkuInfo skuInfo = skuInfoMapper.selectById(skuID);
-            skuInfo.setPublishStatus(status);
+            skuInfo.setPublishStatus(1);
             skuInfoMapper.updateById(skuInfo);
-            // TODO 整合MQ把数据同步到ES
+            // 整合MQ把数据同步到ES--->发送消息
+            rabbitService.sendMessage(MQConst.EXCHANGE_GOODS_DIRECT,
+                                      MQConst.ROUTING_GOODS_UPPER,
+                                      skuID);
             return skuInfo;
         }else{ //下架
             SkuInfo skuInfo = skuInfoMapper.selectById(skuID);
-            skuInfo.setPublishStatus(status);
+            skuInfo.setPublishStatus(0);
             skuInfoMapper.updateById(skuInfo);
-            // TODO 整合MQ把数据同步到ES
+            //整合MQ把数据同步到ES--->发送消息
+            rabbitService.sendMessage(MQConst.EXCHANGE_GOODS_DIRECT,
+                                        MQConst.ROUTING_GOODS_LOWER,
+                                        skuID);
             return skuInfo;
         }
     }
@@ -201,4 +213,5 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoMapper, SkuInfo> impl
         skuInfoMapper.updateById(skuInfo);
         return skuInfo;
     }
+
 }

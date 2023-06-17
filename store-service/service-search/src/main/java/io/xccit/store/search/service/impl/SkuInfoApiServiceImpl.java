@@ -24,6 +24,11 @@ public class SkuInfoApiServiceImpl implements ISkuInfoApiService {
     private SkuInfoRepository skuInfoRepository;
     @Autowired
     private ProductFeignClient productFeignClient;
+
+    /**
+     * 商品上架
+     * @param skuID skuid
+     */
     @Override
     public void upperSku(Long skuID) {
         SkuInfo skuInfo = productFeignClient.getSkuBySkuID(skuID);
@@ -52,7 +57,6 @@ public class SkuInfoApiServiceImpl implements ISkuInfoApiService {
             skuEs.setPerLimit(skuInfo.getPerLimit());
         } else {
             //TODO 待完善-秒杀商品
-
         }
         //保存到ES
         skuInfoRepository.save(skuEs);

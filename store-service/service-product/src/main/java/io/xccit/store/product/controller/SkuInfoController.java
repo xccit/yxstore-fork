@@ -14,6 +14,8 @@ import io.xccit.store.vo.product.SkuInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * <p>
  * sku信息 前端控制器
@@ -67,6 +69,13 @@ public class SkuInfoController {
     public AjaxResult<String> deleteByID(@ApiParam(value = "商品SkuID",required = true) @PathVariable Long id){
         skuInfoService.removeById(id);
         return AjaxResult.ok("删除成功");
+    }
+
+    @ApiOperation("批量删除")
+    @DeleteMapping("/batchRemove")
+    public AjaxResult<String> batchRemove(@ApiParam("批量删除id列表") @RequestBody List<Long> ids){
+        skuInfoService.removeByIds(ids);
+        return AjaxResult.ok("成功");
     }
 
     @ApiOperation("商品审核")

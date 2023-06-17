@@ -31,4 +31,5 @@ public interface ISkuInfoService extends IService<SkuInfo> {
     SkuInfo publish(Long skuID, Integer status);
 
     SkuInfo isNewPerson(Long skuID, Integer status);
+
 }
