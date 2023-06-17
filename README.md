@@ -21,15 +21,18 @@ Vue+ElementUI+vue-element-admin
 ```text
 store-
 	  |common 公共组件
-	  |generator 代码生成
-	  		|common-util 公共工具类
+	        |common-util 公共工具类
 	  		|service-util 微服务工具类
+	  |generator 代码生成	
 	  |model 存放实体类等
 	  |service 微服务相关
 	          | service-acl 用户角色权限管理
 	          | service-sys 系统管理
 	          | service-product  商品管理
 	          | service-search  商品上下架/搜索...
+	  |clients 远程服务调用
+	          | product-clients 商品远程调用
+	  
 ```
 
 

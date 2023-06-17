@@ -5,24 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.xccit</groupId>
-        <artifactId>store-service</artifactId>
+        <artifactId>store-clients</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>service-search</artifactId>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
-        </dependency>
-        <!--商品远程调用模块依赖-->
-        <dependency>
-            <groupId>io.xccit</groupId>
-            <artifactId>product-clients</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
+    <artifactId>product-clients</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

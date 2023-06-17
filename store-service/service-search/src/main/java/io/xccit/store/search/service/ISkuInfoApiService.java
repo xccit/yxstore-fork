@@ -6,4 +6,7 @@ package io.xccit.store.search.service;
  * @description
  */
 public interface ISkuInfoApiService {
+    void upperSku(Long skuID);
+
+    void lower(Long skuID);
 }

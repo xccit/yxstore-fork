@@ -13,6 +13,7 @@
         <module>store-service</module>
         <module>store-model</module>
         <module>store-generator</module>
+        <module>store-clients</module>
     </modules>
 
     <parent>
