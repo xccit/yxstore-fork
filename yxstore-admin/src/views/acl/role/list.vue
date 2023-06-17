@@ -6,11 +6,10 @@
         <el-form :inline="true" size="small" label-width="140px">
           <el-form-item label="输入搜索：">
             <el-input style="width: 203px" v-model="tempSearchObj.roleName" placeholder="角色名称"></el-input>
-            <el-button style="margin-left:20px;" type="primary" icon="el-icon-search" size="small" @click="search()">查询</el-button>
-          <el-button type="warning" size="small" @click="resetSearch()">清空</el-button>
           </el-form-item>
 
-          
+          <el-button type="primary" icon="el-icon-search" @click="search()">查询</el-button>
+          <el-button type="default" @click="resetSearch()">清空</el-button>
         </el-form>
       </div>
     </el-card>
@@ -20,7 +19,7 @@
       <i class="el-icon-tickets" style="margin-top: 5px"></i>
       <span style="margin-top: 5px">数据列表</span>
 
-      <el-button type="success" class="btn-add" size="mini" @click="addRole">添加</el-button>
+      <el-button class="btn-add" size="mini" @click="addRole">添加</el-button>
       <el-button class="btn-add" size="mini" @click="removeRoles()" :disabled="selectedRoles.length === 0" style="margin: 0 10px;">批量删除</el-button>
     </el-card>
 

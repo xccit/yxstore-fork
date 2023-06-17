@@ -6,12 +6,10 @@
         <el-form :inline="true" size="small" label-width="140px">
           <el-form-item label="输入搜索：">
             <el-input style="width: 203px" v-model="tempSearchObj.username" placeholder="用户名"></el-input>
-            <el-input style="width: 203px;margin-left:10px;" v-model="tempSearchObj.name" placeholder="姓名"></el-input>
-            <el-button style="margin-left:20px;" type="primary" icon="el-icon-search" @click="getUsers()">查询</el-button>
-          <el-button type="warning" @click="resetSearch()">清空</el-button>
           </el-form-item>
 
-          
+          <el-button type="primary" icon="el-icon-search" @click="getUsers()">查询</el-button>
+          <el-button type="default" @click="resetSearch()">清空</el-button>
         </el-form>
       </div>
     </el-card>
@@ -20,7 +18,7 @@
     <el-card class="operate-container" shadow="never">
       <i class="el-icon-tickets" style="margin-top: 5px"></i>
       <span style="margin-top: 5px">数据列表</span>
-      <el-button class="btn-add" type="success" size="mini" @click="showAddUser">添 加</el-button>
+      <el-button class="btn-add" size="mini" @click="showAddUser">添 加</el-button>
       <el-button class="btn-add" size="mini" @click="revomveUsers" :disabled="selectedIds.length===0" style="margin: 0 10px;">批量删除</el-button>
     </el-card>
 
@@ -45,7 +43,7 @@
       />
 
       <el-table-column prop="username" label="用户名" width="120" />
-      <el-table-column prop="name" label="姓名" width="120" />
+      <el-table-column prop="name" label="用户名称" width="120" />
       <el-table-column prop="createTime" label="创建时间" width="180"/>
       <el-table-column prop="updateTime" label="更新时间" width="180"/>
 
@@ -84,7 +82,7 @@
         <el-form-item label="用户名" prop="username">
           <el-input v-model="user.username"/>
         </el-form-item>
-        <el-form-item label="用户姓名">
+        <el-form-item label="用户名称">
           <el-input v-model="user.name"/>
         </el-form-item>
 
@@ -134,8 +132,7 @@ export default {
         username: ''
       },
       tempSearchObj: { // 收集搜索条件输入的对象
-        username: '',
-        name:''
+        username: ''
       },
       selectedIds: [], // 所有选择的user的id的数组
       users: [], // 当前页的用户列表
@@ -327,7 +324,7 @@ export default {
       this.listLoading = false
       const {records, total} = result.data
       this.users = records
-      this.total = total
+      this.total = total-1
       this.selectedIds = []
     },
 

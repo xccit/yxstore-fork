@@ -18,19 +18,19 @@ export default {
     })
   },
 
-  save(category) {
+  save(role) {
     return request({
       url: `${api_name}/save`,
       method: 'post',
-      data: category
+      data: role
     })
   },
 
-  updateById(category) {
+  updateById(role) {
     return request({
       url: `${api_name}/update`,
       method: 'put',
-      data: category
+      data: role
     })
   },
   removeById(id) {

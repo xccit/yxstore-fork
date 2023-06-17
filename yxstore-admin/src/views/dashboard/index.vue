@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">Welcome: {{ name }}</div>
+    <div class="dashboard-text">name: {{ name }}</div>
   </div>
 </template>
 
@@ -25,7 +25,6 @@ export default {
   &-text {
     font-size: 30px;
     line-height: 46px;
-    text-align: center;
   }
 }
 </style>

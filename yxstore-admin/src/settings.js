@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: 'yxstore',
+  title: 'Vue Admin Template',
 
   /**
    * @type {boolean} true | false

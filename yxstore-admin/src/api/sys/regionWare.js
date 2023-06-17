@@ -18,11 +18,11 @@ export default {
     })
   },
 
-  save(regionWare) {
+  save(role) {
     return request({
       url: `${api_name}/save`,
       method: 'post',
-      data: regionWare
+      data: role
     })
   },
 
