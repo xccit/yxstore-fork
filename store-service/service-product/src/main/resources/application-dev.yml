@@ -26,6 +26,7 @@ spring:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-enums-package: io.xccit.store.enums
 
 aliyun:
   # 地域

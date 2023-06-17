@@ -30,6 +30,7 @@ store-
 	          | service-sys 系统管理
 	          | service-product  商品管理
 	          | service-search  商品上下架/搜索...
+	          | service-activity 商品活动管理
 	  |clients 远程服务调用
 	          | product-clients 商品远程调用
 	  
