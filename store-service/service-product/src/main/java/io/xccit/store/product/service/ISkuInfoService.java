@@ -8,6 +8,8 @@ import io.xccit.store.model.product.SkuInfo;
 import io.xccit.store.vo.product.SkuInfoQueryVo;
 import io.xccit.store.vo.product.SkuInfoVo;
 
+import java.util.List;
+
 /**
  * <p>
  * sku信息 服务类
@@ -32,4 +34,7 @@ public interface ISkuInfoService extends IService<SkuInfo> {
 
     SkuInfo isNewPerson(Long skuID, Integer status);
 
+    List<SkuInfo> getSkuInfoListByIDS(List<Long> skuIds);
+
+    List<SkuInfo> findSkuInfoByKeyword(String keyword);
 }

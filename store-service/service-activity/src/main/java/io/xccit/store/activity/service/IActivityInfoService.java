@@ -24,4 +24,9 @@ public interface IActivityInfoService extends IService<ActivityInfo> {
 
     IPage<ActivityInfo> getPageList(Page<ActivityInfo> activityInfoPage);
 
+    Map<String, Object> findActivityRuleList(Long activityID);
+
+    void saveActivityRuleAndSku(ActivityRuleVo activityRuleVo);
+
+    List<SkuInfo> getSkuInfoByKeyword(String keyword);
 }

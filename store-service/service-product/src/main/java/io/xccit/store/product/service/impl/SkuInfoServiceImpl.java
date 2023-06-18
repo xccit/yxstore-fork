@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -212,6 +213,21 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoMapper, SkuInfo> impl
         skuInfo.setIsNewPerson(status);
         skuInfoMapper.updateById(skuInfo);
         return skuInfo;
+    }
+
+    @Override
+    public List<SkuInfo> getSkuInfoListByIDS(List<Long> skuIds) {
+        if (skuIds != null){
+            return skuInfoMapper.selectBatchIds(skuIds);
+        }
+        return new ArrayList<>();
+    }
+
+    @Override
+    public List<SkuInfo> findSkuInfoByKeyword(String keyword) {
+        LambdaQueryWrapper<SkuInfo> wrapper = new LambdaQueryWrapper<>();
+        wrapper.like(SkuInfo::getSkuName,keyword);
+        return skuInfoMapper.selectList(wrapper);
     }
 
 }

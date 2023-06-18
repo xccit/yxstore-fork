@@ -2,4 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.xccit.store.activity.mapper.ActivityInfoMapper">
 
+    <!--如果参加过活动且活动未过期,排除此skuID-->
+    <select id="selectExistsSkuID" resultType="java.lang.Long">
+        select sku.sku_id from activity_info info inner join activity_sku sku on info.id = sku.activity_id
+        <where>
+            <if test="skuIDList != null">
+                and sku.sku_id in
+                <foreach collection="skuIDList" item="skuID" separator="," open="(" close=")">
+                    #{skuID}
+                </foreach>
+            </if>
+            and now() between info.start_time and info.end_time
+        </where>
+    </select>
 </mapper>

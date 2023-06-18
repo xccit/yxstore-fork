@@ -9,10 +9,13 @@ import io.swagger.annotations.ApiParam;
 import io.xccit.store.activity.service.IActivityInfoService;
 import io.xccit.store.common.result.AjaxResult;
 import io.xccit.store.model.activity.ActivityInfo;
+import io.xccit.store.model.product.SkuInfo;
+import io.xccit.store.vo.activity.ActivityRuleVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -51,6 +54,7 @@ public class ActivityInfoController {
     @GetMapping("/get/{activityID}")
     public AjaxResult<ActivityInfo> getByID(@ApiParam(value = "活动ID",required = true) @PathVariable Long activityID){
         ActivityInfo activityInfo = activityInfoService.getById(activityID);
+        activityInfo.setActivityTypeString(activityInfo.getActivityType().getComment());
         return AjaxResult.ok(activityInfo);
     }
 
@@ -75,4 +79,24 @@ public class ActivityInfoController {
         return AjaxResult.ok("删除成功");
     }
 
+    @ApiOperation("获取活动规则+SKU列表")
+    @GetMapping("/findActivityRuleList/{activityID}")
+    public AjaxResult<Map<String,Object>> findActivityRuleList(@ApiParam("活动ID") @PathVariable Long activityID){
+        Map<String,Object> activityRuleMap = activityInfoService.findActivityRuleList(activityID);
+        return AjaxResult.ok(activityRuleMap);
+    }
+
+    @ApiOperation("添加活动规则及SKU")
+    @PostMapping("/saveActivityRule")
+    public AjaxResult<String> saveActivityRuleAndSku(@RequestBody ActivityRuleVo activityRuleVo){
+        activityInfoService.saveActivityRuleAndSku(activityRuleVo);
+        return AjaxResult.ok("添加成功");
+    }
+
+    @ApiOperation("根据关键字获取SKU,添加活动范围时搜索SKU选择")
+    @GetMapping("findSkuInfoByKeyword/{keyword}")
+    public AjaxResult<List<SkuInfo>> findSkuInfoByKeyword(@ApiParam("sku关键字") @PathVariable String keyword){
+        List<SkuInfo> skuInfoList = activityInfoService.getSkuInfoByKeyword(keyword);
+        return AjaxResult.ok(skuInfoList);
+    }
 }
