@@ -24,7 +24,7 @@ import java.util.Map;
 @Api(tags = "角色接口")
 @RestController
 @RequestMapping("/admin/acl/role")
-@CrossOrigin
+//@CrossOrigin
 public class RoleController {
 
     @Autowired

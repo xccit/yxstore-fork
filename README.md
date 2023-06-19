@@ -33,6 +33,7 @@ store-
 	          | service-activity 商品活动管理
 	  |clients 远程服务调用
 	          | product-clients 商品远程调用
+	  |gateway  SpringCloud网关模块
 	  
 ```
 

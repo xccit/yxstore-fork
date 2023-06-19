@@ -16,5 +16,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 public class ServiceActivityApplication {
     public static void main(String[] args) {
         SpringApplication.run(ServiceActivityApplication.class,args);
+        System.out.println("活动管理模块启动成功...");
     }
+
 }

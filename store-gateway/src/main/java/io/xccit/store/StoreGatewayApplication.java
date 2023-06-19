@@ -6,15 +6,14 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * @author CH_ywx
- * @date 2023-06-14
+ * @date 2023-06-19
  * @description
  */
-
 @SpringBootApplication
 @EnableDiscoveryClient
-public class ServiceProductApplication {
+public class StoreGatewayApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ServiceProductApplication.class,args);
-        System.out.println("商品管理模块启动成功...");
+        SpringApplication.run(StoreGatewayApplication.class,args);
+        System.out.println("网关模块启动成功...");
     }
 }

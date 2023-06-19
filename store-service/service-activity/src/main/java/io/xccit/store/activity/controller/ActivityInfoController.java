@@ -28,7 +28,7 @@ import java.util.Map;
 @Api(tags = "活动接口")
 @RestController
 @RequestMapping("/admin/activity/activityInfo")
-@CrossOrigin
+//@CrossOrigin
 public class ActivityInfoController {
 
     @Autowired

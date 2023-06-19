@@ -14,6 +14,7 @@
         <module>store-model</module>
         <module>store-generator</module>
         <module>store-clients</module>
+        <module>store-gateway</module>
     </modules>
 
     <parent>

@@ -23,7 +23,7 @@ import java.util.List;
 @Api(tags = "商品远程调用接口")
 @RestController
 @RequestMapping("/api/product")
-@CrossOrigin
+//@CrossOrigin
 public class ProductInnerController {
 
     @Autowired

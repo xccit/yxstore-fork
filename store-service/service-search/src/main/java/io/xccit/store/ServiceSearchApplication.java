@@ -18,6 +18,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 public class ServiceSearchApplication {
     public static void main(String[] args) {
         SpringApplication.run(ServiceSearchApplication.class,args);
-        System.out.println("商品搜索模块启动成功");
+        System.out.println("商品搜索模块启动成功...");
     }
 }

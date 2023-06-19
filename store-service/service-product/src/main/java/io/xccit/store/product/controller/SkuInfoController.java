@@ -28,7 +28,7 @@ import java.util.List;
 @Api(tags = "SKU接口")
 @RestController
 @RequestMapping("/admin/product/skuInfo")
-@CrossOrigin
+//@CrossOrigin
 public class SkuInfoController {
 
     @Autowired
