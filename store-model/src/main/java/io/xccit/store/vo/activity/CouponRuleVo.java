@@ -28,7 +28,7 @@ public class CouponRuleVo implements Serializable {
    @ApiModelProperty(value = "使用门槛 0->没门槛")
    private BigDecimal conditionAmount;
 
-   @ApiModelProperty(value = "优惠券参与的商品list")
+   @ApiModelProperty(value = "优惠券参与的商品/分类list")
    private List<CouponRange> couponRangeList;
 
    @ApiModelProperty(value = "优惠券范围描述")

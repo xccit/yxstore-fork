@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.List;
+
 /**
  * <p>
  * 商品三级分类 服务实现类
@@ -33,5 +35,10 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
             queryWrapper.like(Category::getName,name);
         }
         return categoryMapper.selectPage(categoryPage,queryWrapper);
+    }
+
+    @Override
+    public List<Category> findCateGoryByRangeIDs(List<Long> categoryIds) {
+        return categoryMapper.selectBatchIds(categoryIds);
     }
 }

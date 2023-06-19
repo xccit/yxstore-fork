@@ -64,6 +64,9 @@ public class ActivityInfoServiceImpl extends ServiceImpl<ActivityInfoMapper, Act
         LambdaQueryWrapper<ActivityRule> ruleLambdaQueryWrapper = new LambdaQueryWrapper<>();
         ruleLambdaQueryWrapper.eq(ActivityRule::getActivityId,activityID);
         List<ActivityRule> activityRules = activityRuleMapper.selectList(ruleLambdaQueryWrapper);
+        if (activityRules.size() == 0){
+            result.put("activityRuleList",new ArrayList<ActivityRule>());
+        }
         result.put("activityRuleList",activityRules);
         //查询活动SKU 根据activity_sku表中的activity_id 匹配 sku_id列表 根据sku_id 列表 查询 sku_info(product)-->远程调用
         LambdaQueryWrapper<ActivitySku> skuLambdaQueryWrapper = new LambdaQueryWrapper<>();
@@ -73,6 +76,9 @@ public class ActivityInfoServiceImpl extends ServiceImpl<ActivityInfoMapper, Act
         List<Long> skuIds = activitySkus.stream().map(ActivitySku::getSkuId).collect(Collectors.toList());
         //远程调用 通过skuIds 获取 sku_info
         List<SkuInfo> skuInfoList = productFeignClient.findSkuInfoList(skuIds);
+        if (skuInfoList.size() == 0){
+            result.put("skuInfoList",new ArrayList<SkuInfo>());
+        }
         result.put("skuInfoList",skuInfoList);
         return result;
     }
@@ -119,6 +125,9 @@ public class ActivityInfoServiceImpl extends ServiceImpl<ActivityInfoMapper, Act
     public List<SkuInfo> getSkuInfoByKeyword(String keyword) {
         // 远程调用product 根据关键字获取sku列表
         List<SkuInfo> skuInfoList = productFeignClient.findSkuInfoByKeyword(keyword);
+        if (skuInfoList.size() == 0){ //如果根据关键字没有查到商品信息,直接返回一个空集合
+            return skuInfoList;
+        }
         List<Long> skuIDList = skuInfoList.stream().map(SkuInfo::getId).collect(Collectors.toList());
         // 查询activity_info和activity_sku,判断商品列表中的商品是否有参加过活动的,活动未过期且参加过则排除
         // 1.从所有skuID中查询activity_sku表中已参加活动且未过期的id

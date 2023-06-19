@@ -56,4 +56,11 @@ public class ProductInnerController {
         return skuInfoService.findSkuInfoByKeyword(keyword);
     }
 
+    @ApiOperation("根据range_id列表查询category列表")
+    @GetMapping("/inner/findCategoryList/{categoryIds}")
+    public List<Category> findCateGoryByRangeIDs(@PathVariable List<Long> categoryIds){
+        return categoryService.findCateGoryByRangeIDs(categoryIds);
+    }
+
+
 }
