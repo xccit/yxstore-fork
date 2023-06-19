@@ -245,7 +245,7 @@ export default {
             rangeType: 'SKU',
             rangeId: item.id
           })
-          rangeDesc += item.spuName + ','
+          rangeDesc += item.skuName + ','
         })
       }
       if (this.couponInfo.rangeType === 'CATEGORY') {

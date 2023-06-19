@@ -220,38 +220,38 @@ export const constantRoutes = [
     {
       path: '/activity',
       component: Layout,
-      redirect: '/activity/seckill',
+      redirect: 'activity/seckill',
       name: 'Activity',
       meta: { title: '营销活动管理', icon: 'dashboard' },
       alwaysShow: true,
       children: [
-        // {
-        //   path: 'seckill/list',
-        //   name: 'Seckill',
-        //   component: () => import('@/views/activity/seckill/list'),
-        //   meta: { title: '秒杀活动列表' }
-        // },
-        // {
-        //   path: 'seckill/timeList',
-        //   name: 'SeckillTime',
-        //   component: () => import('@/views/activity/seckill/timeList'),
-        //   meta: { title: '秒杀时间段列表' },
-        //   hidden: true
-        // },
-        // {
-        //   path: 'seckill/selectTimeList',
-        //   name: 'SelectSeckillTime',
-        //   component: () => import('@/views/activity/seckill/selectTimeList'),
-        //   meta: { title: '秒杀时间段选择' },
-        //   hidden: true
-        // },
-        // {
-        //   path: 'seckill/seckillSkuList',
-        //   name: 'SeckillSku',
-        //   component: () => import('@/views/activity/seckill/seckillSkuList'),
-        //   meta: { title: '秒杀商品列表' },
-        //   hidden: true
-        // },
+        {
+          path: 'seckill/list',
+          name: 'Seckill',
+          component: () => import('@/views/activity/seckill/list'),
+          meta: { title: '秒杀活动列表' }
+        },
+        {
+          path: 'seckill/timeList',
+          name: 'SeckillTime',
+          component: () => import('@/views/activity/seckill/timeList'),
+          meta: { title: '秒杀时间段列表' },
+          hidden: true
+        },
+        {
+          path: 'seckill/selectTimeList',
+          name: 'SelectSeckillTime',
+          component: () => import('@/views/activity/seckill/selectTimeList'),
+          meta: { title: '秒杀时间段选择' },
+          hidden: true
+        },
+        {
+          path: 'seckill/seckillSkuList',
+          name: 'SeckillSku',
+          component: () => import('@/views/activity/seckill/seckillSkuList'),
+          meta: { title: '秒杀商品列表' },
+          hidden: true
+        },
   
         {
           path: 'activityInfo/list',

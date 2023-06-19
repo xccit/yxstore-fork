@@ -103,7 +103,7 @@
           </el-form-item>
 
           <el-form-item>
-            <el-button type="" @click="dialogRangVisible = false">取消</el-button>
+            <el-button type="" @click="dialogRangVisible = false;keyword=''">取消</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -252,7 +252,7 @@ export default {
         activitySkuList: skuList,
         couponIdList: couponIdList
       }
-      debugger
+      // debugger
       api.saveActivityRule(ruleData).then(response => {
         this.$message.success(response.message)
         this.$router.push({ path: '/activity/activityInfo/list' })
@@ -269,7 +269,6 @@ export default {
 
     fetchRuleDataById(id) {
       api.findActivityRuleList(id).then(response => {
-        // debugger
         this.activityRuleList = response.data.activityRuleList || []
         this.skuInfoList = response.data.skuInfoList || []
         this.couponInfoList = response.data.couponInfoList || []
@@ -300,6 +299,7 @@ export default {
     selectData(item) {
       this.skuInfoList.push(item)
       this.dialogRangVisible = false
+      this.keyword = ''
     },
 
     removeSkuDataById(index) {
