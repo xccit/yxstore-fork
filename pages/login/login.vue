@@ -54,15 +54,15 @@ export default {
 								key: 'token',
 								data: result.token,
 								success: async () => {
+									// 路由跳转至首页
+									uni.reLaunch({
+										url: '/pages/index/index',
+									});
 									// 更新用户信息
 									await this.$u.api.postUpdateUser({
 										sex,
 										photoUrl,
 										nickName
-									});
-									// 路由跳转至首页
-									uni.reLaunch({
-										url: '/pages/index/index',
 									});
 								}
 							});

@@ -107,7 +107,7 @@
 
 			<!-- 如何购买商品 -->
 			<view class="u-p-20 u-m-20 gg-border u-font-xs">
-				<view class="u-m-b-20">如何在[硅谷优选]购买商品</view>
+				<view class="u-m-b-20">如何在[优选商城]购买商品</view>
 				<view class="u-flex">
 					<view class="gg-number u-m-r-10">1</view>
 					挑商品
