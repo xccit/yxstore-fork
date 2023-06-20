@@ -1,15 +1,28 @@
-# 优选商城项目开发
+# 优选商城用户端
 
-## 项目架构
+## 项目技术栈
 
-### 后端服务
+使用UNI-APP开发
 
-SpringBoot+SpringCloud+SpringCloud Alibaba+Nacos+Redis+RabbitMQ+ElasticSearch+MyBatisPlus等
+## 运行指引
 
-### 后台管理
+### 1.配置小程序ID
 
-Vue+ElementUI+vue-element-admin
+![image-20230620101634685](README.assets/image-20230620101634685.png)
 
-### 用户端
+此处的ID为个人在微信小程序申请的小程序ID,测试ID也可以
 
-微信小程序+UNI-APP
+### 2.配置请求路径
+
+> 有条件可以买服务器,部署后端,并且买域名并进行企业备案,服务器解析域名后,此时可以使用自己的域名作为baseUrl
+>
+> 如果没有,使用内网穿透与本地部署的后端端口进行映射,使用内网穿透的域名即可.
+
+![image-20230620101947717](README.assets/image-20230620101947717.png)
+
+推荐内网穿透地址:https://www.ngrok.cc/
+
+> 注意:服务器与身份认证都需要收费,身份认证是一次性的,2元即可,服务器需要到期续费
+
+### 3.其他错误需要根据工具提示自行解决
+
