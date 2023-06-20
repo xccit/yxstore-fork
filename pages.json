@@ -37,7 +37,7 @@
 		}, {
 			"path": "pages/login/login",
 			"style": {
-				"navigationBarTitleText": "登陆页",
+				"navigationBarTitleText": "登录",
 				"enablePullDownRefresh": false
 			}
 

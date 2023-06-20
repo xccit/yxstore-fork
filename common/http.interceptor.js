@@ -1,7 +1,7 @@
 const install = (Vue, vm) => {
 	Vue.prototype.$u.http.setConfig({
-		//内网穿透
-		baseUrl: ' http://yxstore.free.idcfengye.com',
+		//内网穿透(域名+/api)==>所有关于用户的请求前缀都是/api
+		baseUrl: ' http://yxstore.free.idcfengye.com/api',
 		loadingText: '请求中...', // 请求loading中的文字提示
 		loadingTime: 800, // 在此时间内，请求还没回来的话，就显示加载中动画，单位ms
 		loadingMask: true, // 展示loading的时候，是否给一个透明的蒙层，防止触摸穿透

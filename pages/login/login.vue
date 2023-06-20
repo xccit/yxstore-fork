@@ -1,6 +1,6 @@
 <template>
 	<view class="wrap">
-		<view class="content"><view class="title">欢迎登录优选商城团购平台</view></view>
+		<view class="content"><view class="title">优选商城团购平台</view></view>
 		<view class="buttom">
 			<view class="loginType">
 				<!-- 对于按钮需要进行禁用判断，以防止多次点击 -->
@@ -89,7 +89,7 @@ export default {
 		width: 600rpx;
 		margin: 80rpx auto 0;
 		.title {
-			text-align: left;
+			text-align: center;
 			font-size: 60rpx;
 			font-weight: 500;
 			margin-bottom: 100rpx;
