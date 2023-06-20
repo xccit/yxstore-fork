@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import io.xccit.store.common.auth.AuthContextHolder;
 import io.xccit.store.common.constant.RedisConst;
 import io.xccit.store.common.exception.StoreException;
 import io.xccit.store.common.result.AjaxResult;
@@ -19,13 +20,9 @@ import io.xccit.store.vo.user.UserLoginVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.management.ObjectName;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -99,5 +96,17 @@ public class WeChatApiController {
         resultMap.put("token",token);
         resultMap.put("leaderAddressVo",leaderAddressVo);
         return AjaxResult.ok(resultMap);
+    }
+
+    @ApiOperation("更新用户信息")
+    @PostMapping("/auth/updateUser")
+    public AjaxResult<String> updateUser(@RequestBody User user){
+        // 当前登录用户
+        User loginUser = userService.getById(AuthContextHolder.getUserID());
+        loginUser.setNickName(user.getNickName());
+        loginUser.setPhotoUrl(user.getPhotoUrl());
+        loginUser.setSex(user.getSex());
+        userService.updateById(loginUser);
+        return AjaxResult.ok("修改成功");
     }
 }

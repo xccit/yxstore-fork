@@ -32,6 +32,7 @@ store-
 	          | service-search  商品上下架/搜索...
 	          | service-activity 商品活动管理
 	          | service-user 用户模块
+	          | service-home 首页数据显示
 	  |clients 远程服务调用
 	          | product-clients 商品远程调用
 	  |gateway  SpringCloud网关模块
